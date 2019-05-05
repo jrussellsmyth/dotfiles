@@ -31,6 +31,9 @@ This adds some extra formulas/casks. Also adds a brew command extras-bundle to l
 brew extras-bundle core
 ```
 
+# Applications that still require manual install
+Fusion 360 - https://manage.autodesk.com
+Renoise
 
 # Brief Plan
 
