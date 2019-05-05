@@ -11,7 +11,9 @@ Initializing a system begins with installing Homebrew (it will provide the tools
 This install includes setting up xcode command-line tools, including GIT, so we can now clone this repo
 to ~/.dotfiles
 
-git clone git@bitbucket.org:jrussellsmyth/dotfiles.git ~/.dotfiles
+```bash
+git clone https://github.com/jrussellsmyth/dotfiles.git ~/.dotfiles
+```
 
 May automate this further, but for now - first thing MUST be to execute the initial linking
 
