@@ -34,6 +34,7 @@ brew extras-bundle core
 # Applications that still require manual install
 Fusion 360 - https://manage.autodesk.com
 Renoise
+sws-extensions for Reaper
 
 # Brief Plan
 
