@@ -17,16 +17,23 @@ git clone https://github.com/jrussellsmyth/dotfiles.git ~/.dotfiles
 
 May automate this further, but for now - first thing MUST be to execute the initial linking
 
-. ~/.dotfiles/bootstrap.sh && source ~/.bash_profile
+```bash
+. ~/.dotfiles/bootstrap.sh
+```
 
-Executing the Brewfile.xxx bundles will install software. Start with common as it will install tools necessary
-for some additional installs (mas for instance to install Apple Store apps)
+Install my brew Tap
+```
+brew tap jrussellsmyth/extra
+```
 
-execute .dotfiles/boostrap.sh
+This adds some extra formulas/casks. Also adds a brew command extras-bundle to load pre-defined app sets from Bundles
+```
+brew extras-bundle core
+```
+
 
 # Brief Plan
-install Homebrew  // installer for homebrew, many binaries in casks, which incluces xcode-commandline tools
-git clone
+
 
 brew install mas // allows for Mac App Store installs
 
