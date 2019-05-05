@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 
+ORIGIN_DIR=${PWD}
+
 cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
 
 function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
-		-avh --no-perms . ~;
+	for file in $( ls -A | grep -vE '\.nolink*|\.git$|\.gitignore|.*.md|Brewfile.*|bootstrap.sh|\.DS_Store|README\.md|LICENSE-MIT\.txt' ) ; do
+		ln -siv "$PWD/$file" "$HOME"
+	done
 	source ~/.bash_profile;
 }
 
@@ -25,3 +23,4 @@ else
 	fi;
 fi;
 unset doIt;
+cd $ORIGIN_DIR
