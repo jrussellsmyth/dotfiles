@@ -21,9 +21,9 @@ May automate this further, but for now - first thing MUST be to execute the init
 . ~/.dotfiles/bootstrap.sh
 ```
 
-Install my brew Tap
+Install my Homebrew Tap
 ```
-brew tap jrussellsmyth/extra
+brew tap jrussellsmyth/tap
 ```
 
 This adds some extra formulas/casks. Also adds a brew command extras-bundle to load pre-defined app sets from Bundles
