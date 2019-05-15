@@ -29,6 +29,10 @@ local gridget = function()
     end
 end
 
+local captureCurrentWindowPos = function() 
+	last_pos = gridget();
+	last_window = hs.window.focusedWindow();
+end
 
 
 
@@ -50,6 +54,8 @@ hs.hotkey.bind({"cmd","alt", "ctrl"}, "left" ,  function()
 	end
 		
 	gridset(currCell.x, currCell.y, currCell.w, currCell.h)()
+	captureCurrentWindowPos();
+
 end)
 -- move size right
 hs.hotkey.bind({"cmd","alt", "ctrl"}, "right" , function()
@@ -71,6 +77,8 @@ hs.hotkey.bind({"cmd","alt", "ctrl"}, "right" , function()
 	end
 		
 	gridset(currCell.x, currCell.y, currCell.w, currCell.h)()
+	captureCurrentWindowPos();
+
 end)
 -- move size up
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "up",  function()
@@ -104,6 +112,8 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "up",  function()
 	end
 		
 	gridset(currCell.x, currCell.y, currCell.w, currCell.h)()
+	captureCurrentWindowPos();
+
 end)
 -- move size down
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "down",  function()
@@ -127,5 +137,22 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "down",  function()
 		currCell.h = 2
 	end	
 	gridset(currCell.x, currCell.y, currCell.w, currCell.h)()
+	captureCurrentWindowPos();
 end)
+
+-- hs.window.filter.default:subscribe(hs.window.filter.windowFocused, function(window, appName)
+-- 	--hs.alert.show('Focused: ' .. window:title())
+-- 	if last_window then
+-- 		hs.grid.set(
+-- 				last_window,
+-- 				last_pos,
+-- 				last_window:screen()
+-- 		)
+-- 	end
+-- 	last_pos = gridget();
+-- 	last_window = window;
+-- 	gridset(1,0,2,6)()
+-- end)
+
+
 
