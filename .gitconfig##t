@@ -191,7 +191,7 @@
 	insteadOf = https://bitbucket.org/
 [url "git@bitbucket.org:nextiva"]
 	insteadOf = https://bitbucket.org/nextiva
-{% if yadm.user == russsmyth %}
+{% if yadm.user == "russsmyth" %}
 [user]
 	name = Russ Smyth
 	email = russ.smyth@nextiva.com
