@@ -1,0 +1,35 @@
+#! /bin/sh
+# bootstrap for Dotfiles
+# tput info https://linuxcommand.org/lc3_adv_tput.php
+# set some styles
+BOLD=$(tput bold)
+CYAN=$(tput setaf  6)
+RED=$(tput setaf  1)
+CLF=$(tput sgr0)
+
+# Check for / install oh-my-zsh
+echo  "${BOLD}[Checking for oh-my-zsh...]${CLF}"
+if [ -d ~/.oh-my-zsh ]; then
+	echo "... oh-my-zsh is ${CYAN}already installed${CLF}"
+ else
+ 	echo "... oh-my-zsh is ${RED}not installed${CLF}, ${CYAN}installing${CLF}"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"    
+fi
+
+#install homebrew if its missing
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+fi
