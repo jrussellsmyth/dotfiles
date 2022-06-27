@@ -1,0 +1,1 @@
+source <(curl -L bootstrap.yadm.io) && yadm clone --bootstrap ~/dotfiles
