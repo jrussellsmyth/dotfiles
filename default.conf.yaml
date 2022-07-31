@@ -5,8 +5,12 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc: bashrc
-    ~/.bash_prompt: bash_prompt
+    ~/.bashrc: 
+      force: true
+      path: bashrc
+    ~/.bash_prompt: 
+      force: true
+      path: bash_prompt
     ~/.huslogin: hushlogin
     ~/.zshrc:
       force: true
