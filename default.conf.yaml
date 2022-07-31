@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: bashrc
+    ~/.bash_prompt: bash_prompt
+    ~/.huslogin: hushlogin
+    ~/.zshrc:
+      force: true
+      path: zshrc
+    ~/.hammerspoon:
+      if: '[ `uname` = Darwin ]'
+      path: hammerspoon
