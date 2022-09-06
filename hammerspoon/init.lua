@@ -156,11 +156,8 @@ end)
 
 
 local usbWatcher = nil
--- This is our usbWatcher function
--- lock when yubikey is removed
 function usbDeviceCallback(data)
     -- this line will let you know the name of each usb device you connect, useful for the string match below
-    -- hs.notify.show("USB", "You just connected", data["productName"])
 	coreLogger.f("you just %s productName:%s, vendorName:%s, vendorId:%s, productId:%s", data["eventType"], data["productName"],data["vendorName"], data["vendorId"],data["productId"])
     -- Replace "Yubikey" with the name of the usb device you want to use.
 	if (data["eventType"] == "added" and string.find(data["productName"],"USB3.0 Hub") and string.find(data["vendorName"], "VIA Labs, Inc.")) then
@@ -175,12 +172,16 @@ end
 
 function hooTooAdded() 
 	coreLogger.f("hootoo-added")
-	hs.execute("/usr/local/bin/blueutil --connect 84-38-35-39-11-81")
+	-- turn on bluetooth and make sure trackpad is connected
+	hs.execute("/usr/local/bin/blueutil --power 1") 
+	hs.execute("/usr/local/bin/blueutil --connect 84-38-35-39-11-81") 
 end
 function hooTooRemoved() 
 	coreLogger.f("hootoo-removed")
-	ouput, status, type, rc = hs.execute("/usr/local/bin/blueutil --disconnect 84-38-35-39-11-81 --wait-disconnect 84-38-35-39-11-81")
-	coreLogger.f(status)
+	-- disconnect trackpad and turn off bluetooth
+	hs.execute("/usr/local/bin/blueutil --disconnect 84-38-35-39-11-81 --wait-disconnect 84-38-35-39-11-81")
+	hs.execute("/usr/local/bin/blueutil --power 0") 
+
 end
 -- Start the usb watcher
 usbWatcher = hs.usb.watcher.new(usbDeviceCallback)
