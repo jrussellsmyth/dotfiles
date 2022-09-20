@@ -183,6 +183,20 @@ function hooTooRemoved()
 	hs.execute("/usr/local/bin/blueutil --power 0") 
 
 end
+
+function forceConnectTrackpad() 
+	coreLogger.f("bt on")
+	hs.execute("/usr/local/bin/blueutil --power 1") 
+	hs.execute("/usr/local/bin/blueutil --connect 84-38-35-39-11-81") 
+end
+
+function forceDisconnectTrackpad() 
+	coreLogger.f("bt off")
+	hs.execute("/usr/local/bin/blueutil --disconnect 84-38-35-39-11-81 --wait-disconnect 84-38-35-39-11-81")
+	hs.execute("/usr/local/bin/blueutil --power 0") 
+end
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "p", forceConnectTrackpad)
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "o", forceDisconnectTrackpad)
 -- Start the usb watcher
 usbWatcher = hs.usb.watcher.new(usbDeviceCallback)
 usbWatcher:start()
